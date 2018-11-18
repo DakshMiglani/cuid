@@ -34,7 +34,7 @@ function safeCounter () {
 function cuid () {
   // Starting with a lowercase letter makes
   // it HTML element ID friendly.
-  var letter = 'c', // hard-coded allows for sequential access
+  var letter = 'kr', // hard-coded allows for sequential access
 
     // timestamp
     // warning: this exposes the exact date and time
