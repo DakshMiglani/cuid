@@ -1,5 +1,5 @@
 {
-  "name": "cuid",
+  "name": "kuid",
   "version": "2.1.4",
   "description": "Collision-resistant ids optimized for horizontal scaling and performance. For node and browsers.",
   "author": {
