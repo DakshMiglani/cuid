@@ -68,7 +68,7 @@ cuid.slug = function slug () {
 
 cuid.isCuid = function isCuid (stringToCheck) {
   if (typeof stringToCheck !== 'string') return false;
-  if (stringToCheck.startsWith('c')) return true;
+  if (stringToCheck.startsWith('kr')) return true;
   return false;
 };
 
