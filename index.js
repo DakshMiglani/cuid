@@ -17,7 +17,8 @@ var getRandomValue = require('./lib/getRandomValue.js');
 var c = 0,
   blockSize = 4,
   base = 36,
-  discreteValues = Math.pow(base, blockSize);
+  discreteValues = Math.pow(base, blockSize),
+  pre = null;
 
 function randomBlock () {
   return pad((getRandomValue() *
@@ -34,7 +35,7 @@ function safeCounter () {
 function cuid () {
   // Starting with a lowercase letter makes
   // it HTML element ID friendly.
-  var letter = 'kr', // hard-coded allows for sequential access
+  var letter = pre ? pre : "k", // hard-coded allows for sequential access
 
     // timestamp
     // warning: this exposes the exact date and time
@@ -55,6 +56,10 @@ function cuid () {
   return letter + timestamp + counter + print + random;
 }
 
+cuid.initPrefix = function initPrefix(prefix) {
+  pre = prefix
+}
+
 cuid.slug = function slug () {
   var date = new Date().getTime().toString(36),
     counter = safeCounter().toString(36).slice(-4),
@@ -68,7 +73,7 @@ cuid.slug = function slug () {
 
 cuid.isCuid = function isCuid (stringToCheck) {
   if (typeof stringToCheck !== 'string') return false;
-  if (stringToCheck.startsWith('kr')) return true;
+  if (stringToCheck.startsWith(pre ? pre : 'k')) return true;
   return false;
 };
 
